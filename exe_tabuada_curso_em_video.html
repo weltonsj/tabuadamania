@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {
+            color: white;
+            background-color: #b1003b;
+        }
+
+        header {
+            text-shadow: 1px 1px 3px black;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: #e7dddd;
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 1px 0px 4px black;
+        }
+
+        #dados {
+            margin: 5px;
+        }   
+
+        #tabuada {
+            margin: 5px;
+        }
+
+        #camp_num {
+            width: 100%;
+        }
+
+        #btn_gt {
+            width: 50%;
+        }
+
+        #resut {
+            margin: 35px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+        }
+
+        p {
+            padding: 5px;
+            font-weight: bold;
+            color: #b1003b;
+        }
+
+        footer {
+            font-size: 12px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: white;
+            text-align: center;
+            text-shadow: 1px 1px 3px black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tabuada Mania</h1>
+        <small>Wetinho da Bahia</small>
+    </header>
+
+    <section>
+        <div id="dados">
+            <p>Tabuada:</p>
+            <input id="camp_num" type="number">
+            <input id="btn_gt" type="button" value="Gerar">
+        </div>
+        <div id="tabuada">
+            <p>Forma:</p>
+            <select name="multiplicador" id="multiplicador">
+                <option id="somar" value="somar">Somar</option>
+                <option id="diminuir" value="diminuir">Diminuir</option>
+                <option id="multiplicar" value="multiplicar">Multiplicar</option>
+                <option id="dividir" value="dividir">Dividir</option>
+            </select>
+        </div>
+        <div id="resut">
+            <select name="tabuada" id="camp_tabuada" size="10">
+                <option>Digite um número acima.</option>
+            </select>
+        </div>
+    </section>
+
+    <footer>
+        <small>&copy; Icoutech Tecnology</small>
+    </footer>
+    <script src="exe_tabuada_curso_em_video.js"></script>
+</body>
+</html>
