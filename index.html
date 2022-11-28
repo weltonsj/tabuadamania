@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {
+            color: white;
+            background-color: #b1003b;
+        }
+
+        header {
+            text-shadow: 1px 1px 3px black;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            margin: auto;
+            margin-top: 25px;
+            background-color: #e7dddd;
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 1px 0px 4px black;
+        }
+
+        #dados {
+            margin: 5px;
+        }
+
+        #tabuada {
+            margin: 5px;
+        }
+
+        #camp_num {
+            width: 100%;
+            color: #b1003b;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #btn_gt {
+            border: 2px solid #b1003b;
+            border-radius: 5px;
+            /* box-shadow: 1px 1px 1px black; */
+            color: black;
+            margin-top: 2.5px;
+            width: 50%;
+        }
+
+        #btn_gt:hover {
+            background-color: #b1003b;
+            color: white;
+            font-weight: bold;
+        }
+
+        #resut {
+            margin: 5px;
+            padding: 10px;
+            /* background-color: white; */
+            width: 88%;
+            color: #b1003b;
+        }
+
+        ul {
+            list-style: none;
+            padding: 10px;
+            /* box-shadow: 0px 1px 1px 0px black; */
+        }
+
+        li {
+            padding: 2px;
+        }
+
+        #plass {
+            color: #b1003b75;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            color: #b1003b;
+            font-weight: 550;
+        }
+
+        p {
+            padding: 5px;
+            font-weight: bold;
+            color: #b1003b;
+            font-size: 20px;
+        }
+
+        footer {
+            font-size: 12px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: white;
+            text-align: center;
+            text-shadow: 1px 1px 3px black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tabuada Mania</h1>
+        <small>Weltinho da Bahia</small>
+    </header>
+
+    <section>
+        <div id="dados">
+            <p>Tabuada:</p>
+            <input id="camp_num" type="number" placeholder="Digite um número">
+            <input id="btn_gt" type="button" value="Gerar">
+        </div>
+        <div id="tabuada">
+            <p>Forma:</p>
+            <select name="multiplicador" id="multiplicador">
+                <option id="somar" value="somar">Somar</option>
+                <option id="subtração" value="subtração">Subtração</option>
+                <option id="multiplicar" value="multiplicar">Multiplicar</option>
+                <option id="divisao" value="divisao">Divisão</option>
+            </select>
+        </div>
+        <div id="resut">
+            <ul id="lista">
+                <li id="plass"><small>Digite um número acima...</small></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <small>&copy; Icoutech Tecnology</small>
+    </footer>
+
+    <script>
+        var btn = document.querySelector('#btn_gt');
+        btn.addEventListener('click', tabuada);
+
+        function tabuada() {
+            var seletor = document.getElementById("multiplicador");
+            var s = seletor.value;
+            var camp_num = document.getElementById("camp_num");
+            var n = Number(camp_num.value)
+            var lista = document.getElementById("lista");
+            lista.innerHTML = '';
+
+            if (n == 0) {
+                alert('Por favor digite um número!');
+                // lista.innerHTML = 'Por favor digite um número acima!'
+                // lista.style.color = '#b1003b'
+                camp_num.focus();
+                document.location.reload(true);
+                lista.innerHTML = '';
+
+            }
+            else {
+                lista.style.background = 'white';
+                lista.style.border = '0.5px solid #c9b9b9';
+                lista.style.boxShadow = '0px 0px 1px 0px black';
+                switch (s) {
+                    case 'somar':
+                        for (let i = 1; i < 11; i++) {
+                            var novoItem = document.createElement("li");
+                            let soma = i + n;
+                            novoItem.innerHTML = `${n} + ${i} = ${soma}`
+                            lista.appendChild(novoItem);
+                        }
+                        break;
+
+                    case 'subtração':
+                        for (let i = 1; i < 11; i++) {
+                            var novoItem = document.createElement("li");
+                            let sub = i + n
+                            let soma = sub - n;
+                            novoItem.innerHTML = `${sub} - ${n} = ${soma}`
+                            lista.appendChild(novoItem);
+                        }
+                        break;
+
+                    case 'multiplicar':
+                        for (let i = 1; i < 11; i++) {
+                            var novoItem = document.createElement("li");
+                            let soma = i * n;
+                            novoItem.innerHTML = `${n} x ${i} = ${soma}`
+                            lista.appendChild(novoItem);
+                        }
+                        break;
+
+                    case 'divisao':
+                        let divisor = 10 * n;
+                        for (let i = 1; i <= divisor; i++) {
+                            if (i % n == 0) {
+                                if (n > i) {
+                                    var novoItem = document.createElement("li");
+                                    let soma = n / i;
+                                    novoItem.innerHTML = `${n} - ${i} = ${soma}`
+                                    lista.appendChild(novoItem);
+                                }
+                                else {
+                                    var novoItem = document.createElement("li");
+                                    let soma = i / n;
+                                    novoItem.innerHTML = `${i} / ${n} = ${soma}`
+                                    lista.appendChild(novoItem);
+                                }
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
