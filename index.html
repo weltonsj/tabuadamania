@@ -176,10 +176,10 @@
         var seletor = document.getElementById("multiplicador");
         camp_num.focus();
 
-        // seletor.addEventListener("change", mudar);
-        // function mudar() {
-        //     camp_num.focus();
-        // }
+        seletor.addEventListener("change", mudar);
+        function mudar() {
+            tabuada();
+        }
 
         function tabuada() {
 
@@ -196,13 +196,12 @@
                 camp_num.focus();
                 document.location.reload(true);
                 lista.innerHTML = '';
-
             }
             else {
                 lista.style.background = 'white';
                 lista.style.border = '0.5px solid #c9b9b9';
                 lista.style.boxShadow = '0px 0px 1px 0px black';
-                camp_num.value = '';
+                // camp_num.value = '';
 
                 switch (s) {
                     case 'somar':
