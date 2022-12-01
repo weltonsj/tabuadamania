@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabuada</title>
+    <title>Tabuada da Bahia</title>
     <style>
         * {
             margin: 0;
@@ -50,26 +50,41 @@
         }
 
         #btn_gt {
+            background-color: #b1003b;
             border: 2px solid #b1003b;
             border-radius: 5px;
+            font-weight: bold;
             /* box-shadow: 1px 1px 1px black; */
-            color: black;
+            color: white;
             margin-top: 2.5px;
             width: 50%;
         }
 
         #btn_gt:hover {
-            background-color: #b1003b;
+            background-color: #d12760;
             color: white;
-            font-weight: bold;
+            box-shadow: 1px 1px 2px black;
+        }
+
+        #btn_gt:active {
+            width: 49%;
+            font-weight: normal;
+            background-color: #d12760;
+            box-shadow: 1px 1px 2px black;
         }
 
         #resut {
             margin: 5px;
             padding: 10px;
             /* background-color: white; */
+            font-weight: bold;
             width: 88%;
+            color: black;
+        }
+
+        span {
             color: #b1003b;
+            font-weight: bolder;
         }
 
         ul {
@@ -108,39 +123,44 @@
             text-align: center;
             text-shadow: 1px 1px 3px black;
         }
+
+        small {
+            font-size: 0.5rem;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Tabuada Mania</h1>
-        <small>Weltinho da Bahia</small>
+        <h1>Tabuada da Bahia</h1>
     </header>
 
     <section>
         <div id="dados">
-            <p>Tabuada:</p>
+            <p>Número:</p>
             <input id="camp_num" type="number" placeholder="Digite um número">
-            <input id="btn_gt" type="button" value="Gerar">
+            
         </div>
         <div id="tabuada">
-            <p>Forma:</p>
+            <p>Tabuada:</p>
             <select name="multiplicador" id="multiplicador">
-                <option id="somar" value="somar">Soma</option>
+                <option id="somar" value="somar">Somar</option>
                 <option id="subtração" value="subtração">Subtração</option>
-                <option id="multiplicar" value="multiplicar">Multiplicação</option>
+                <option id="multiplicar" value="multiplicar">Multiplicar</option>
                 <option id="divisao" value="divisao">Divisão</option>
             </select>
         </div>
         <div id="resut">
             <ul id="lista">
-                <li id="plass"><small>Digite um número acima...</small></li>
+                <!-- <li id="plass"><small>Digite um número acima...</small></li> -->
             </ul>
         </div>
+        <input id="btn_gt" type="button" value="Gerar">
     </section>
 
     <footer>
-        <small>&copy; Icoutech Tecnology</small>
+        <small>Criado por Welton Santos,</small>
+        <small>Empresa &copy; Icoutech Tecnology</small>
     </footer>
 
     <script>
@@ -173,7 +193,7 @@
                         for (let i = 1; i < 11; i++) {
                             var novoItem = document.createElement("li");
                             let soma = i + n;
-                            novoItem.innerHTML = `${n} + ${i} = ${soma}`
+                            novoItem.innerHTML = `<span>${n}</span> + ${i} = ${soma}`
                             lista.appendChild(novoItem);
                         }
                         break;
@@ -183,7 +203,7 @@
                             var novoItem = document.createElement("li");
                             let sub = i + n
                             let soma = sub - n;
-                            novoItem.innerHTML = `${sub} - ${n} = ${soma}`
+                            novoItem.innerHTML = `${sub} - <span>${n}</span> = ${soma}`
                             lista.appendChild(novoItem);
                         }
                         break;
@@ -192,7 +212,7 @@
                         for (let i = 1; i < 11; i++) {
                             var novoItem = document.createElement("li");
                             let soma = i * n;
-                            novoItem.innerHTML = `${n} x ${i} = ${soma}`
+                            novoItem.innerHTML = `<span>${n}</span> x ${i} = ${soma}`
                             lista.appendChild(novoItem);
                         }
                         break;
@@ -204,13 +224,13 @@
                                 if (n > i) {
                                     var novoItem = document.createElement("li");
                                     let soma = n / i;
-                                    novoItem.innerHTML = `${n} - ${i} = ${soma}`
+                                    novoItem.innerHTML = `<span>${n}</span> - ${i} = ${soma}`
                                     lista.appendChild(novoItem);
                                 }
                                 else {
                                     var novoItem = document.createElement("li");
                                     let soma = i / n;
-                                    novoItem.innerHTML = `${i} / ${n} = ${soma}`
+                                    novoItem.innerHTML = `${i} / <span>${n}</span> = ${soma}`
                                     lista.appendChild(novoItem);
                                 }
                             }
