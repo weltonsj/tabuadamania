@@ -139,11 +139,11 @@
         <div id="dados">
             <p>Número:</p>
             <input id="camp_num" type="number" placeholder="Digite um número">
-
         </div>
         <div id="tabuada">
             <p>Tabuada:</p>
             <select name="multiplicador" id="multiplicador">
+                <option value="Selecione uma opção">Selecione uma opção</option>
                 <option id="somar" value="somar">Somar</option>
                 <option id="subtração" value="subtração">Subtração</option>
                 <option id="multiplicar" value="multiplicar">Multiplicar</option>
@@ -177,8 +177,18 @@
         camp_num.focus();
 
         seletor.addEventListener("change", mudar);
+        camp_num.addEventListener("change", mudar)
+        seletor.value = "Selecione uma opção";
         function mudar() {
-            tabuada();
+            var v = seletor.value
+            var c = camp_num.value
+
+            if (c > 0 && seletor.value == "somar"
+                || seletor.value == "subtração"
+                || seletor.value == "multiplicar"
+                || seletor.value == "divisao") {
+                tabuada();
+            }
         }
 
         function tabuada() {
@@ -191,8 +201,6 @@
 
             if (n == 0) {
                 alert('Por favor digite um número!');
-                // lista.innerHTML = 'Por favor digite um número acima!'
-                // lista.style.color = '#b1003b'
                 camp_num.focus();
                 document.location.reload(true);
                 lista.innerHTML = '';
