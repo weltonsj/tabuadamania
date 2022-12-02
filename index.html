@@ -166,11 +166,6 @@
     <script>
         var btn = document.querySelector('#btn_gt');
         btn.addEventListener('click', tabuada);
-        document.addEventListener("keypress", function (e) {
-            if (e.key == "Enter") {
-                tabuada();
-            }
-        });
 
         var camp_num = document.getElementById("camp_num");
         var seletor = document.getElementById("multiplicador");
@@ -179,6 +174,7 @@
         seletor.addEventListener("change", mudar);
         camp_num.addEventListener("change", mudar)
         seletor.value = "Selecione uma opção";
+
         function mudar() {
             var v = seletor.value
             var c = camp_num.value
